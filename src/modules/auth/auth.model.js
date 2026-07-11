@@ -1,8 +1,13 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+const { z } = require('zod');
 
 const userSchema = new mongoose.Schema(
     {
-        name: {
+        firstname: {
+            required: true,
+            type: String
+        },
+        lastname: {
             required: true,
             type: String
         },
@@ -10,6 +15,11 @@ const userSchema = new mongoose.Schema(
             required: true,
             unique: true,
             type: String
+        },
+        mobileno: {
+            required: true,
+            type: Number,
+            unique: true
         }
     },
     {
