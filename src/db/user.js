@@ -15,7 +15,7 @@ export const usersTable = pgTable("users", {
     deletedAt: timestamp("deleted_at", { withTimezone: true }),
 }, (table) => ({
     mobileUnique: uniqueIndex("mobile_unique_active")
-        .on(table.mobileno)
+        .on(table.mobilenumber)
         .where(sql`${table.deletedAt} IS NULL`),
 
     emailUnique: uniqueIndex("email_unique_active")
@@ -25,7 +25,7 @@ export const usersTable = pgTable("users", {
 
 
 //users details table schema.
-export const usersDetailsTable = pgTable('users_details', {
+export const usersDetailsTable = pgTable("users_details", {
     id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
     userid: integer("userid").notNull().references(() => usersTable.id, { onDelete: "cascade", }),
     identityType: integer("identity_type").notNull(), //1-single male, 2-Straight couples, 3-gay couple, 4-lesbian couple.
