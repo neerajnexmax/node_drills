@@ -13,15 +13,15 @@ export const usersTable = pgTable("users", {
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),
-}, (table) => ({
-    mobileUnique: uniqueIndex("mobile_unique_active")
+}, (table) => ([
+    uniqueIndex("mobile_unique_active")
         .on(table.mobilenumber)
         .where(sql`${table.deletedAt} IS NULL`),
 
-    emailUnique: uniqueIndex("email_unique_active")
+    uniqueIndex("email_unique_active")
         .on(table.email)
         .where(sql`${table.deletedAt} IS NULL`)
-}));
+]));
 
 
 //users details table schema.
