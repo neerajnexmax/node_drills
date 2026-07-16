@@ -1,5 +1,5 @@
 export const taxonomy = {
-    "sex": {
+    "gender_identity": {
         1: "Single Male",
         2: "Straight Couple",
         3: "Gay Couple",

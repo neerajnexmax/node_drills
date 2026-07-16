@@ -4,7 +4,7 @@ import { getTaxonomyList } from "./taxonomy.controller.js";
 const router = Router();
 
 //taxonomy routes.
-router.get("/", getTaxonomyList)
+router.get("/", getTaxonomyList);
 
 
 

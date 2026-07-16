@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //taxonomy routes
-app.use("/api", routes);
+app.use("/api/v1/", routes);
 
 
 
