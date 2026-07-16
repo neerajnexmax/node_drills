@@ -1,13 +1,11 @@
-const dotenv = require('dotenv').config();
-const dbConnect = require('./config/db');
-const app = require('./app');
+import 'dotenv/config';
+import app from './app.js';
 
 
 const PORT = process.env.PORT || 3000;
 
 const serverStart = async () => {
     try {
-        await dbConnect();   //db connect first call.
         app.listen(PORT, () => {
             console.log(`Server started successfully at http://localhost:${PORT}`);
         })
