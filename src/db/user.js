@@ -63,7 +63,7 @@ export const socialAccountsTable = pgTable("social_accounts", {
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),
-}, (table) => ({
-    providerUnique: uniqueIndex("provider_unique")
+}, (table) => ([
+    uniqueIndex("provider_unique")
         .on(table.loginProvider, table.providerId).where(sql`${table.deletedAt} IS NULL`)
-}));
+]));
